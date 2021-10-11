@@ -21,8 +21,10 @@ public class Modelo {
 		fichero_escritura = "ficheroEscritura.txt";
 	}
 	
+	/**
+	 * Este método devuelve una lista de string con el contenido del fichero (cada elemento de la lista es una linea del fichero).
+	 */
 	public ArrayList<String> contenidoFichero(String fichero){
-		//Este método devuelve una lista de string con el contenido del fichero (cada elemento de la lista es una linea del fichero).
 		
 		ArrayList<String> contenidoFichero = new ArrayList<String>();
 		File f = new File(fichero);
@@ -43,14 +45,23 @@ public class Modelo {
 		return contenidoFichero;
 	}
 	
+	/**
+	 * Este método devuelve el fichero de lectura en formato String.
+	 */
 	public  String ficheroLectura() {
 		return fichero_lectura;
 	}
 	
+	/**
+	 * Este método devuelve el fichero de escritura en formato String.
+	 */
 	public String ficheroEscritura() {
 		return fichero_escritura;
 	}
 	
+	/**
+	 * Este método nos devuelve un int que refleja las veces que aparece la palabra indicada por parámetros.
+	 */
 	public int buscarTexto(String textToSearch) {
 		
 		File f1 = new File(ficheroLectura());
@@ -75,7 +86,7 @@ public class Modelo {
 			fr.close();
 			br.close();
 			
-			JOptionPane.showMessageDialog(new JFrame(), "La palabra indicada aparece "+count+ " veces en el fichero.", "SUUUU", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(new JFrame(), "La palabra indicada aparece "+count+ " veces en el fichero.", "Búsqueda: " + textToSearch, JOptionPane.INFORMATION_MESSAGE);
 			
 			return count;
 
@@ -87,6 +98,10 @@ public class Modelo {
 		return 0;
 	}
 	
+	
+	/**
+	 * Método que remplaza la las palabra indicada en el primer parámetro por la que indiquiemos como segundo parámetro.
+	 */
 	public void reemplazarTexto(String textToSearch, String finalText) {
 		try {
 			FileReader fr = new FileReader(ficheroLectura());

@@ -19,6 +19,9 @@ public class Controlador {
 		initEventHandlers();
 	}
 
+	/*
+	 * Método inicialización de programa.
+	 */
 	public void initEventHandlers() {
 		
 		ficheroLectura = modelo.ficheroLectura();
@@ -26,15 +29,16 @@ public class Controlador {
 		
 		mostrarFichero(ficheroLectura, 1);
 	
+		//Asignamos el método buscarTexto() al botón correspondiente.
 		actionListenerSearch = new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				String textToSearch = vista.getTextFieldBuscar().getText();
 				modelo.buscarTexto(textToSearch);
-//				mostrarFichero(ficheroLectura, 2);
 			}
 		};
 		vista.getBtnBuscar().addActionListener(actionListenerSearch);
 		
+		//Asignamos el método reemplazarTexto() al botón correspondiente.
 		actionListenerReplace = new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				String textToReplace = vista.getTextFieldBuscar().getText();
@@ -46,6 +50,9 @@ public class Controlador {
 	}
 
 	
+	/*
+	 * Método para imprimir en el area correspondiente (indicada por parámetros) el contenido del fichero indicado (también indicado por parámetros).
+	 */
 	public void mostrarFichero(String fichero, int numeroTextArea) {
 		ArrayList<String> arrayLineas = modelo.contenidoFichero(fichero);
 		for(String linea : arrayLineas) {
