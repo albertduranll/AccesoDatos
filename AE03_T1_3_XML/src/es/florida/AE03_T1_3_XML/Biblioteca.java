@@ -35,7 +35,7 @@ public class Biblioteca {
 		int id;
 		
 		while (choice != 6) {
-			System.out.println("1. Mostrar todos los títulos de la biblioteca");
+			System.out.println("\n\n1. Mostrar todos los títulos de la biblioteca");
 			System.out.println("2. Mostrar información detallada de un libro");
 			System.out.println("3. Crear nuevo libro");
 			System.out.println("4. Actualizar libro");
@@ -102,7 +102,7 @@ public class Biblioteca {
 	public static void mostrarLibrosBiblioteca() {
 		System.out.println("\nContenido de la biblioteca: ");
 		for (Libro libro : lista) {
-			System.out.println("\n" + libro.getIdentificador() + " - " + libro.getTitulo()+"\n"+"\n");			
+			System.out.println(libro.getIdentificador() + " - " + libro.getTitulo());			
 		}
 	}
 	
@@ -229,6 +229,9 @@ public class Biblioteca {
 		return lista;
 	}
 	
+	/*
+	 * Método para escribir el fichero XML mediante el ArrayList que pasamos como parametro.
+	 */	
 	public static void writeXmlFile(ArrayList<Libro> lista) 
 	{
 		try
