@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<biblioteca>
+    <libro id="0">
+        <titulo>Crotatlon</titulo>
+        <autor>CristobalVillalon</autor>
+        <anyo>1558</anyo>
+        <editorial>VicensVives</editorial>
+        <paginas>244</paginas>
+    </libro>
+    <libro id="1">
+        <titulo>LOTR</titulo>
+        <autor>Tolkien</autor>
+        <anyo>1964</anyo>
+        <editorial>Unknown</editorial>
+        <paginas>1125</paginas>
+    </libro>
+    <libro id="2">
+        <titulo>GOT</titulo>
+        <autor>GeorgeRR</autor>
+        <anyo>1996</anyo>
+        <editorial>UKeditors</editorial>
+        <paginas>1435</paginas>
+    </libro>
+    <libro id="3">
+        <titulo>Libro4</titulo>
+        <autor>AutorDeLibro4</autor>
+        <anyo>2007</anyo>
+        <editorial>VicensVives</editorial>
+        <paginas>157</paginas>
+    </libro>
+    <libro id="4">
+        <titulo>Libro5</titulo>
+        <autor>SUUU</autor>
+        <anyo>2017</anyo>
+        <editorial>Alfaguara</editorial>
+        <paginas>94</paginas>
+    </libro>
+</biblioteca>
