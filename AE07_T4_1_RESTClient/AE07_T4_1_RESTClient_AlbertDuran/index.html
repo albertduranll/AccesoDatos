@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos.css">
+    <title>EjerciciosT4 - AAD</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script> 
+        /*SCRIPT PARA GENERAR CONSULTA A LA API*/
+
+        //Método para la obtención de los datos de la API.
+        function getFilmInfo(){
+            
+            var strBusqueda = document.getElementById('strBusqueda').value;
+
+            axios
+            //Usamos en enlace de la API i la apiKey para generar la conulta con los datos que introduce el usuario.
+            .get("http://www.omdbapi.com/?apikey=b3efbb71&t=" + strBusqueda)
+            //Obtenemos la respuesta de la consulta.
+            .then(response =>{
+                // console.log(response);
+
+                if(response.data.Plot == undefined){
+                    //Ocultamos el bloque de información.
+                    document.getElementById("filmInfo").style.display = "none";
+                    
+                    alert("Error en la consulta: No existe la pelicula con el título indicado.")
+                }
+                else{
+                    //Mostramos el bloque de información
+                    document.getElementById("filmInfo").style.display = "block";
+
+                    //Imprimimos los datos de la pelicula.
+                    document.getElementById("strTitulo").innerHTML = response.data.Title;
+                    document.getElementById("imgPelicula").src = response.data.Poster;
+                    document.getElementById("imgPelicula").style.display = "block";
+                    document.getElementById("strDirector").innerHTML = response.data.Director;
+                    document.getElementById("strReparto").innerHTML = response.data.Actors;
+                    document.getElementById("strSinopsis").value = response.data.Plot;
+                }
+            })
+            //Gestionamos errores.
+            .catch(error =>{
+                console.log(error);
+                alert("Error al obtener respuesta del servidor.")
+            })
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript">
+        /*SCRIPT PARA GUARDAR DATOS A LA BBDD*/
+
+        function guardar(){
+            //Variables a guardar
+            var titulo = document.getElementById("strTitulo").innerHTML;
+            var director = document.getElementById("strDirector").innerHTML;
+            var reparto = document.getElementById("strReparto").innerHTML;
+            var sinopsis = document.getElementById("strSinopsis").value;
+            var poster = document.getElementById("imgPelicula").src;
+
+            $.ajax({
+                type: "POST", //Método POST para enviar datos al servidor
+                url: "dbquery.php", //Ruta del fichero PHP del servidor
+                data: {titulo: titulo,director: director,reparto: reparto,sinopsis: sinopsis,poster: poster}, //Datos a guardar
+                success: (response)=>{
+                    //Resultado del PHP del servidor.
+                    alert(response);
+                },
+                error: (error)=>{
+                    alert("Error al procesar los datos.")
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <!-- Identificación de actividad -->
+    <section id="presentationSection">
+        <p class="presentationP" style="text-decoration: underline;">Acceso a Datos</p>
+        <p class="presentationP">AE07_T4_1_RESTClient</p>
+        <p class="presentationP">Albert Duran Lligonya</p>
+    </section>
+    <!-- Sección de búsqueda de pelicula -->
+    <section id="searchSection">
+        <h1><b>FILMOTECA OBERTA</b></h1>
+        <br>
+        <p><input type="text" value="" id="strBusqueda">
+            <button id="botonBusqueda" onclick="getFilmInfo()">BUSCAR</button>
+        </p>
+    </section>
+    <br>
+    <!-- Sección que mostrará los datos de la película (oculto inicialmente) -->
+    <section id="filmInfo">
+        <p>Título:</p>
+        <p id="strTitulo"></p>
+        <img id="imgPelicula" src="" height="400" style="display:none;"/>
+        <p>Director:</p>
+        <p id="strDirector"></p>
+        <p>Reparto:</p>
+        <p id="strReparto"></p>
+        <p>Sinopsis:</p>
+        <textarea id="strSinopsis" rows="5" style="width:50%"></textarea> 
+        <p><button id="botonGuardar" onclick="guardar()">Guardar</button></p>
+    </section>
+</body>
+</html>

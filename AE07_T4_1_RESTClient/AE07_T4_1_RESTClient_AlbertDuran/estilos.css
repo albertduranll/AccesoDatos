@@ -1,0 +1,61 @@
+body{
+    /* background: rgb(48, 48, 156); */
+    margin: 3%;
+    background-image: url("Resources/background.jpg");
+}
+
+h1{
+    text-decoration: underline;
+    color:white;
+    font-size: 2.5em;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h3{
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+text{
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p{
+    color:white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#filmInfo{
+    background-color: rgb(71, 100, 163);
+    display: none;
+    padding: 3%;
+    min-height: 450px;
+}
+
+#searchSection{
+    background-color: rgb(71, 100, 163);
+    text-align: center;
+
+    padding: 3%;
+}
+#strBusqueda{
+    width: 30%;
+}
+
+#imgPelicula{
+    display:inline-block;
+    position:absolute;
+    right: 15%;
+    top: 50%;
+}
+
+#presentationSection{
+    text-align: right;
+    position:absolute;
+    right: 5%
+}
+
+.presentationP{
+    font-size: .75em;
+}
